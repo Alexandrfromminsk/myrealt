@@ -1,0 +1,6 @@
+<h1>{{ rating.pseudonim }}</h1>
+<ul>
+{% for mark in rating.marks_set.all %}
+    <li>{{ mark.weight }}, {{ mark.value }}</li>
+{% endfor %}
+</ul>

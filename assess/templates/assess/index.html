@@ -1,0 +1,9 @@
+{% if ratings_list %}
+    <ul>
+    {% for rating in ratings_list %}
+        <li><a href="/{{ rating.id }}/">{{ rating.pseudonim }}</a> {{ rating.rating }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No ratings are available.</p>
+{% endif %}
