@@ -14,6 +14,7 @@ class Rating(models.Model):
     link = models.TextField()
     rating = models.FloatField()
     is_ready = models.BooleanField()
+    creterias = models.ManyToManyField(Criteria, through='Marks')
 
     def __str__(self):
         return self.pseudonim

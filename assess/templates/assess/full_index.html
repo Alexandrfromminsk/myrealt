@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Full table</title>
+</head>
+<body>
+
+ <table>
+      <tr>
+          <th></th>
+          {% for item in criterias %}
+              <th>{{ item.name }}</th>
+          {% endfor %}
+      </tr>
+      <tr>
+         <th></th>
+        {% for item in ratings %}
+         <th>{{ item.pseudonim }}</th>
+        {% endfor %}
+      </tr>
+      <tr>
+         <th></th>
+        {% for item in marks %}
+         <th>{{ item.value }}</th>
+        {% endfor %}
+      </tr>
+ </table>
+
+<h1> {{ full_index_dict }}</h1>
+
+</body>
+</html>
