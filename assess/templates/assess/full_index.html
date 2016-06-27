@@ -14,20 +14,16 @@
           {% endfor %}
       </tr>
       <tr>
-         <th></th>
-        {% for item in ratings %}
-         <th>{{ item.pseudonim }}</th>
-        {% endfor %}
-      </tr>
-      <tr>
-         <th></th>
-        {% for item in marks %}
-         <th>{{ item.value }}</th>
-        {% endfor %}
-      </tr>
- </table>
+      {% for flat in ratings %}
+          <th> {{ flat.pseudonim }} </th>
 
-<h1> {{ full_index_dict }}</h1>
+          {% for mark in flat.get_all_marks %}
+              <th> {{ mark.value }} </th>
+          {% endfor %}
+          <th> <a href="{{ flat.link }}"> {{ flat.link }} </a></th>
+      </tr>
+      {% endfor %}
+ </table>
 
 </body>
 </html>

@@ -19,6 +19,14 @@ class Rating(models.Model):
     def __str__(self):
         return self.pseudonim
 
+    def get_all_marks(self):
+        marks_list = []
+        crits = Criteria.objects.all()
+        for crit in crits:
+            mark = Marks.objects.get(pseudonim=self, weight = crit)
+            marks_list.append(mark)
+        return marks_list
+
 class Marks(models.Model):
     pseudonim = models.ForeignKey(Rating, on_delete=models.CASCADE)
     weight = models.ForeignKey(Criteria,  on_delete=models.CASCADE)
