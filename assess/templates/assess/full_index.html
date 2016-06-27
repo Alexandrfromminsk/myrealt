@@ -9,6 +9,7 @@
  <table>
       <tr>
           <th></th>
+          <th>Rating</th>
           {% for item in criterias %}
               <th>{{ item.name }}</th>
           {% endfor %}
@@ -16,6 +17,7 @@
       <tr>
       {% for flat in ratings %}
           <th> {{ flat.pseudonim }} </th>
+          <th> {{ flat.calc_rating }} </th>
 
           {% for mark in flat.get_all_marks %}
               <th> {{ mark.value }} </th>
@@ -24,6 +26,12 @@
       </tr>
       {% endfor %}
  </table>
+
+ <button onClick="alert('Add button using Javascript.');">
+       Add button Javascript
+</button>
+
+<div><a href="{% url 'index' %}">Index</a></div>
 
 </body>
 </html>

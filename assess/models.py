@@ -21,11 +21,19 @@ class Rating(models.Model):
 
     def get_all_marks(self):
         marks_list = []
-        crits = Criteria.objects.all()
-        for crit in crits:
+        for crit in Criteria.objects.all():
             mark = Marks.objects.get(pseudonim=self, weight = crit)
             marks_list.append(mark)
         return marks_list
+
+    @property
+    def calc_rating(self):
+        rating = 0
+        for crit in Criteria.objects.all():
+            mark = Marks.objects.get(pseudonim=self, weight=crit)
+            rating+=mark.value*crit.weight
+        self.rating = rating
+        return rating
 
 class Marks(models.Model):
     pseudonim = models.ForeignKey(Rating, on_delete=models.CASCADE)
