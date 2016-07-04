@@ -9,6 +9,9 @@ class Criteria(models.Model):
     def __str__(self):
         return self.name
 
+    def get_ordered_list(self):
+        return self.objects.all().order_by('name')
+
 class Rating(models.Model):
     pseudonim = models.CharField(max_length=60)
     link = models.TextField()
