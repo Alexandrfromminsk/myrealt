@@ -6,6 +6,7 @@
     </ul>
 {% else %}
     <p>No ratings are available.</p>
+    <p><a href="{% url 'add_form' %}" >Add new object</a></p>
 {% endif %}
 
 <a href="{% url 'full_index' %}">Full index</a>
