@@ -1,10 +1,14 @@
-<h1>{{ rating.pseudonim }}</h1>
-<ul>
-{% for mark in rating.marks_set.all %}
-    <li>{{ mark.weight }}, {{ mark.value }}</li>
-{% endfor %}
-</ul>
+{% extends "assess/base.html" %}
 
-<a href="{% url 'full_index' %}">Full index</a>
+{% block content %}
+    <h1>{{ rating.pseudonim }}</h1>
+    <ul>
+    {% for mark in rating.marks_set.all %}
+        <li>{{ mark.weight }}, {{ mark.value }}</li>
+    {% endfor %}
+    </ul>
 
-<a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'full_index' %}">Full index</a>
+
+    <a href="{% url 'index' %}">Home</a>
+{% endblock content %}

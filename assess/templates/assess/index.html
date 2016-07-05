@@ -1,12 +1,18 @@
-{% if ratings_list %}
-    <ul>
-    {% for rating in ratings_list %}
-        <li><a href="{% url 'detail' rating_id=rating.id %}">{{ rating.pseudonim }}</a> {{ rating.calc_rating }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No ratings are available.</p>
-    <p><a href="{% url 'add_form' %}" >Add new object</a></p>
-{% endif %}
+{% extends "assess/base.html" %}
 
-<a href="{% url 'full_index' %}">Full index</a>
+{% block content %}
+
+    {% if ratings_list %}
+        <ul>
+        {% for rating in ratings_list %}
+            <li><a href="{% url 'detail' rating_id=rating.id %}">{{ rating.pseudonim }}</a> {{ rating.calc_rating }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No ratings are available.</p>
+        <p><a href="{% url 'add_form' %}" >Add new object</a></p>
+    {% endif %}
+
+    <a href="{% url 'full_index' %}">Full index</a>
+
+{% endblock content %}
