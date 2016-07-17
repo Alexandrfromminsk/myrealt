@@ -2,16 +2,8 @@
 
 {% block content %}
 
-    <script  type="text/javascript">>
-        $(document).ready(function()
-        {
-            $("#fullIndex").tablesorter();
-        }
-    );
-    </script>
 
-
-     <table id="fullIndex" class="tablesorter">
+     <table id="fullIndex" class="sortable">
          <thead>
           <tr>
               <th></th>
@@ -19,6 +11,7 @@
               {% for item in criterias %}
                   <th>{{ item.name }}</th>
               {% endfor %}
+              <th>link</th>
           </tr>
           </thead>
          <tbody>
