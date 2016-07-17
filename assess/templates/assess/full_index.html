@@ -6,17 +6,17 @@
      <table id="fullIndex" class="sortable">
          <thead>
           <tr>
-              <th></th>
+              <th>Place</th>
               <th>Rating</th>
               {% for item in criterias %}
-                  <th>{{ item.name }}</th>
+                  <th>{{ item.name|capfirst }}</th>
               {% endfor %}
-              <th>link</th>
+              <th>Link</th>
           </tr>
           </thead>
          <tbody>
-          <tr>
           {% for flat in ratings %}
+          <tr  class="{% cycle 'row1' 'row2' %}">
               <th> {{ flat.pseudonim }} </th>
               <td> {{ flat.calc_rating }} </td>
 
@@ -29,14 +29,15 @@
          </tbody>
      </table>
 
-     <button onClick="alert('Add button using Javascript.');">
-           Add button Javascript
-    </button>
+    <form method="get" action="{% url 'add_form' %}">
+        <button type="submit">Add</button>
+    </form>
 
     <div><a href="{% url 'index' %}">Index</a></div>
 
 
-    <a href="{% url 'add_form' %}" >Add-form</a>
+    <!-- CSS button -->
+    <a class="button" href="{% url 'add_form' %}" >Add-form</a>
 
 
 

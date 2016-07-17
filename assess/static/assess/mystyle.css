@@ -1,28 +1,47 @@
 html, body {
     margin: 0;
     padding: 0;
-    background: blue;
+    font-family: Arial, Helvetica, Verdana, Sans-serif;
+    font-size: 26px;
+    color: #667667
+    background: #ffffff;
 }
 .hidden{
     display: none;
 }
 #page-container {
-    background: red;
     margin: auto;
 }
 #main-nav {
-    background: green;
     height: 50px;
 }
 #main-header {
-    background: darkgreen;
+    background:  #db6d16 url(zabor_crop.jpg);
     height: 100px;
+    padding: 0;
+}
+#content{
+    margin:0;
+    padding: 25px;
+    padding-bottom: 15px;
 }
 #footer {
-    background: orange;
     height: 60px;
+    padding-left: 25px;
+    font-size: 16px;
 }
 h1 {
     margin: 0;
-    padding: 0;
+    padding-left: 25px;
+}
+.button {
+  font: bold 16px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
 }

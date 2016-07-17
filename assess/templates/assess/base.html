@@ -12,14 +12,29 @@
 </head>
 <body>
 <div id="page-container">
-    <div id="main-nav"></div>
+    <div id="main-nav">
+        <dl class='hidden'>
+            <dt id="list"><a href="#">List</a></dt>
+            <dt id="Full_table"><a href="#">Full table</a></dt>
+            <dt id="Add"><a href="#">Add new</a></dt>
+            <dt id="Criterias_list"><a href="#">Criterias_list</a></dt>
+        </dl>
+    </div>
     <div id="main-header">
         <h1>Super realt assessment</h1>
     </div>
     <div id="content">
         {% block content %}{% endblock content %}
     </div>
-    <div id="footer"></div>
+    <div id="footer">
+        <div id="altnav">
+            <a href="#">List</a> -
+            <a href="#">Full table</a> -
+            <a href="#">Add new</a> -
+            <a href="#">Criterias_list</a>
+        </div>
+         Copyright © Lenulia and Sasha
+    </div>
 </div>
 </body>
 </html>
