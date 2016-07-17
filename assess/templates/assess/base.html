@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Super Realt</title>
     {% load staticfiles %}
+    <title>Super Realt</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"  type="text/css" href="{% static "assess/jq.css" %}"></script>
+    <link rel="stylesheet"  type="text/css" href="{% static "assess/style.css" %}"></script>
+    <script type="text/javascript" src="{% static "assess/jquery.tablesorter.js" %}"></script>
+    <script type="text/javascript" src="{% static "assess/jquery-latest.js" %}"></script>
+    <--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    -->
 </head>
 <body>
 {% block content %}{% endblock content %}
+
 </body>
 </html>

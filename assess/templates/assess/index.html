@@ -5,7 +5,7 @@
     {% if ratings_list %}
         <ul>
         {% for rating in ratings_list %}
-            <li><a href="{% url 'detail' rating_id=rating.id %}">{{ rating.pseudonim }}</a> {{ rating.calc_rating }}</li>
+            <li><a href="{% url 'detail' rating_id=rating.id %}">{{ rating.pseudonim }}</a> {{ rating.calc_rating }} </li>
         {% endfor %}
         </ul>
     {% else %}

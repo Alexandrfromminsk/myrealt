@@ -2,7 +2,17 @@
 
 {% block content %}
 
-     <table>
+    <script  type="text/javascript">>
+        $(document).ready(function()
+        {
+            $("#fullIndex").tablesorter();
+        }
+    );
+    </script>
+
+
+     <table id="fullIndex" class="tablesorter">
+         <thead>
           <tr>
               <th></th>
               <th>Rating</th>
@@ -10,17 +20,20 @@
                   <th>{{ item.name }}</th>
               {% endfor %}
           </tr>
+          </thead>
+         <tbody>
           <tr>
           {% for flat in ratings %}
               <th> {{ flat.pseudonim }} </th>
-              <th> {{ flat.calc_rating }} </th>
+              <td> {{ flat.calc_rating }} </td>
 
               {% for mark in flat.get_all_marks %}
-                  <th> {{ mark.value }} </th>
+                  <td> {{ mark.value }} </td>
               {% endfor %}
-              <th> <a href="{{ flat.link }}"> {{ flat.link }} </a></th>
+              <td> <a href="{{ flat.link }}"> {{ flat.link }} </a></td>
           </tr>
           {% endfor %}
+         </tbody>
      </table>
 
      <button onClick="alert('Add button using Javascript.');">
@@ -32,4 +45,13 @@
 
     <a href="{% url 'add_form' %}" >Add-form</a>
 
+
+
+{% block addform %}
+
+{% endblock addform %}
+
+
 {% endblock content %}
+
+
