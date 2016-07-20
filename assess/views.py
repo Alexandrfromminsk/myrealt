@@ -5,11 +5,15 @@ from .forms import MarkForm
 
 
 from .models import Rating, Criteria, Marks
-
+import operator
 
 def index(request):
-    ratings_list = Rating.objects.all().order_by('rating')
-    context = {'ratings_list':ratings_list}
+    ratings_list = Rating.objects.all()
+    for item in ratings_list:
+        item.calc_rating
+
+    ordered = sorted(ratings_list, key=operator.attrgetter('rating'), reverse=True)
+    context = {'ratings_list': ordered}
     return render(request, 'assess/index.html', context)
 
 
