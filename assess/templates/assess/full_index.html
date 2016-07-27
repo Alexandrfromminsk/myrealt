@@ -1,8 +1,7 @@
 {% extends "assess/base.html" %}
 
 {% block content %}
-
-
+     <h3>Full Table</h3>
      <table id="fullIndex" class="sortable">
          <thead>
           <tr>
@@ -11,33 +10,29 @@
               {% for item in criterias %}
                   <th>{{ item.name|capfirst }}</th>
               {% endfor %}
-              <th>Link</th>
           </tr>
           </thead>
          <tbody>
           {% for flat in ratings %}
           <tr  class="{% cycle 'row1' 'row2' %}">
-              <th> {{ flat.pseudonim }} </th>
+              <th class="flat_name"> <a href="{{ flat.link }}"> {{ flat.pseudonim }} </a></th>
               <td> {{ flat.calc_rating }} </td>
 
               {% for mark in flat.get_all_marks %}
                   <td> {{ mark.value }} </td>
               {% endfor %}
-              <td> <a href="{{ flat.link }}"> {{ flat.link }} </a></td>
           </tr>
           {% endfor %}
          </tbody>
      </table>
 
     <form method="get" action="{% url 'add_form' %}">
-        <button type="submit">Add</button>
+        <button class="button" type="submit">Add</button>
     </form>
 
-    <div><a href="{% url 'index' %}">Index</a></div>
-
-
-    <!-- CSS button -->
+    <!-- CSS button
     <a class="button" href="{% url 'add_form' %}" >Add-form</a>
+    -->
 
 
 

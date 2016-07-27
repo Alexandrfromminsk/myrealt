@@ -1,0 +1,11 @@
+{% extends "assess/base.html" %}
+
+{% block content %}
+
+    {% for item in criteria %}
+        <h3>{{ item.name|capfirst }}</h3>
+        <p>{{ item.description }} </p>
+        <p> Weight: {{ item.weight }} </p>
+    {% endfor %}
+
+{% endblock content %}

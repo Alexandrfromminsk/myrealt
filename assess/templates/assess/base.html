@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     {% load staticfiles %}
-    <title>Super Realt</title>
+    <title>Super Realt Assessment</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet"  type="text/css" href="{% static "assess/mystyle.css" %}"></script>
     <link rel="stylesheet"  type="text/css" href="{% static "assess/style_table.css" %}"></script>
-    <script type="text/javascript" src="{% static "assess/sorttable.js" %}"></script>
+    <link rel="stylesheet"  type="text/css" href="{% static "assess/mystyle.css" %}"></script>
 
+    <script type="text/javascript" src="{% static "assess/sorttable.js" %}"></script>
 </head>
 <body>
 <div id="page-container">
     <div id="main-nav">
-        <dl class='hidden'>
-            <dt id="list"><a href="#">List</a></dt>
-            <dt id="Full_table"><a href="#">Full table</a></dt>
-            <dt id="Add"><a href="#">Add new</a></dt>
-            <dt id="Criterias_list"><a href="#">Criterias_list</a></dt>
+            <a href="{% url 'index' %}">TOP LIST</a>
+            <a href="{% url 'full_index' %}"">FULL TABLE</a>
+            <a href="{% url 'add_form' %}"">ADD NEW</a>
+            <a href="{% url 'criteria' %}"">CRITERIA</a>
         </dl>
     </div>
     <div id="main-header">
-        <h1>Super realt assessment</h1>
+        <h1>Super Realt Assessment</h1>
     </div>
     <div id="content">
         {% block content %}{% endblock content %}
     </div>
     <div id="footer">
         <div id="altnav">
-            <a href="#">List</a> -
-            <a href="#">Full table</a> -
-            <a href="#">Add new</a> -
-            <a href="#">Criterias_list</a>
+            <a href="{% url 'index' %}">List</a> -
+            <a href="{% url 'full_index' %}"">Full table</a> -
+            <a href="{% url 'add_form' %}"">Add new</a> -
+            <a href="{% url 'criteria' %}"">Criterias_list</a>
         </div>
          Copyright © Lenulia and Sasha
     </div>

@@ -12,12 +12,3 @@ class MarkForm(forms.Form):
     link_field = forms.CharField(required=True)
     is_ready = forms.BooleanField(required=False, initial=False)
 
-    #
-    # for i in range(number_of_fields):
-    #     fieldname = 'mark{}'.format(i)
-    #     fieldname = forms.IntegerField(required=True, initial=0)
-
-    # class Meta:
-    #
-    #     model = Marks
-    #     fields = ('pseudonim','value', 'weight',)

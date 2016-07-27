@@ -2,11 +2,26 @@
 
 {% block content %}
 
-        <h1>New marks</h1>
+    <div id="form_marks"  style="float: left;" >
+        <h3>New Apartment's Marks</h3>
         <form method="POST" class="post-form">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Save</button>
+            <table>
+            {{ form.as_table }}
+            </table>
+            <button type="submit" class="button" style="margin:20px;">Save</button>
         </form>
+    </div>
+
+    <div id="criteria" >
+        <h3>Criteria description</h3>
+        <table>
+        {% for item in criteria %}
+            <tr><td><b>{{ item.name|capfirst }} </b>:{{ item.description }} Weight: {{ item.weight }} </td></tr>
+        {% endfor %}
+        </table>
+    </div>
+
+
 
 {% endblock content %}

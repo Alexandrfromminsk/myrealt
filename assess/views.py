@@ -12,14 +12,15 @@ def index(request):
     for item in ratings_list:
         item.calc_rating
 
-    ordered = sorted(ratings_list, key=operator.attrgetter('rating'), reverse=True)
+    ordered = sorted(ratings_list, key=operator.attrgetter('rating'), reverse=True)[:10]
     context = {'ratings_list': ordered}
     return render(request, 'assess/index.html', context)
 
 
 def detail(request, rating_id):
     rating = get_object_or_404(Rating, pk=rating_id)
-    return render(request, 'assess/detail.html', {'rating':rating})
+    criterias = Criteria.get_ordered_list(Criteria)
+    return render(request, 'assess/detail.html', {'rating':rating, 'criterias':criterias})
 
 def full_index(request):
     ratings = Rating.objects.all()
@@ -27,6 +28,7 @@ def full_index(request):
     return render(request, 'assess/full_index.html', {'ratings':ratings, 'criterias':criterias})
 
 def add_form(request):
+    criteria = Criteria.get_ordered_list(Criteria)
     if request.method == 'POST':
         myform = MarkForm(Criteria.objects.values_list('name', flat=True),request.POST)
         if myform.is_valid():
@@ -36,18 +38,19 @@ def add_form(request):
             new_flat.rating = 0
             new_flat.is_ready=False
             new_flat.save()
-            # try:
-            criterias = Criteria.get_ordered_list(Criteria)
-            for criteria in criterias:
-                mark = myform.cleaned_data.get(criteria.name)
-                new_mark = Marks(pseudonim=new_flat, weight = criteria, value=mark)
+
+
+            for crit in criteria:
+                mark = myform.cleaned_data.get(crit.name)
+                new_mark = Marks(pseudonim=new_flat, weight = crit, value=mark)
                 new_mark.save()
-            #
-            # except:
-            #     return HttpResponse("Model Errors: %s" % myform.errors.as_json())
+
             return redirect('full_index')
-        # else:
-        #     return HttpResponse("Form is not valid: %s" % myform.errors.as_json())
+
     else:
         myform = MarkForm(Criteria.objects.values_list('name', flat=True))
-    return render(request, 'assess/add_form.html', {'form':myform})
+    return render(request, 'assess/add_form.html', {'form':myform, 'criteria':criteria})
+
+def criteria(request):
+    criteria = Criteria.get_ordered_list(Criteria)  # Criteria.objects.all()
+    return render(request, 'assess/criteria.html', {'criteria': criteria})

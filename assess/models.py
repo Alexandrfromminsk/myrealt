@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
+from django.core.exceptions import ObjectDoesNotExist
 
 class Criteria(models.Model):
     name = models.CharField(max_length=60)
@@ -33,8 +34,11 @@ class Rating(models.Model):
     def calc_rating(self):
         rating = 0
         for crit in Criteria.objects.all():
-            mark = Marks.objects.get(pseudonim=self, weight=crit)
-            rating+=mark.value*crit.weight
+            try:
+                mark = Marks.objects.get(pseudonim=self, weight=crit)
+                rating+=mark.value*crit.weight
+            except ObjectDoesNotExist:
+                pass
         self.rating = rating
         return rating
 

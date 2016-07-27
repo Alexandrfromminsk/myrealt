@@ -1,14 +1,26 @@
 {% extends "assess/base.html" %}
 
 {% block content %}
-    <h1>{{ rating.pseudonim }}</h1>
-    <ul>
-    {% for mark in rating.marks_set.all %}
-        <li>{{ mark.weight }}, {{ mark.value }}</li>
-    {% endfor %}
-    </ul>
+    <h3><a href="{{ rating.link }}"> {{ rating.pseudonim }} </a></h3>
+   o park - 0
+     <table id="detail" class="sortable">
+         <thead>
+          <tr>
+              <th>Rating</th>
+              {% for item in criterias %}
+                  <th>{{ item.name|capfirst }}</th>
+              {% endfor %}
+          </tr>
+          </thead>
+         <tbody>
+          <tr>
+              <td> {{ rating.calc_rating }} </td>
 
-    <a href="{% url 'full_index' %}">Full index</a>
+              {% for mark in rating.get_all_marks %}
+                  <td> {{ mark.value }} </td>
+              {% endfor %}
+          </tr>
+         </tbody>
+     </table>
 
-    <a href="{% url 'index' %}">Home</a>
 {% endblock content %}

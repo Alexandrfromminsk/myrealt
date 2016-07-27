@@ -6,10 +6,11 @@ table.sortable {
 	width: 100%;
 }
 table.sortable thead tr th, table.sortable tfoot tr th {
-	background-color: #e6EEEE;
+	background-color: #537E6D;
 	border: 1px solid #FFF;
 	font-size: 16pt;
 	padding: 4px;
+	color: white;
 }
 
 table.sortable tbody td {
@@ -20,9 +21,13 @@ table.sortable tbody td {
 }
 
 tr.row1{
-    background-color: #CDCDCD;
+    background-color: #E3DAC9;
 }
 tr.row2{
-    background-color: #cdcdff;
+    background-color: #AAA995;
 }
 
+th.flat_name{
+    text-align: left;
+    padding-left: 10px;
+}
