@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions  import ObjectDoesNotExist
 
 class Criteria(models.Model):
     name = models.CharField(max_length=60)
@@ -18,7 +18,7 @@ class Rating(models.Model):
     link = models.TextField()
     rating = models.FloatField()
     is_ready = models.BooleanField()
-    creterias = models.ManyToManyField(Criteria, through='Marks')
+    criterias = models.ManyToManyField(Criteria, through='Marks')
 
     def __str__(self):
         return self.pseudonim
@@ -35,7 +35,8 @@ class Rating(models.Model):
         rating = 0
         for crit in Criteria.objects.all():
             try:
-                mark = Marks.objects.get(pseudonim=self, weight=crit)
+                mark = self.marks_set.get(weight=crit)
+
                 rating+=mark.value*crit.weight
             except ObjectDoesNotExist:
                 pass
@@ -45,7 +46,7 @@ class Rating(models.Model):
 class Marks(models.Model):
     pseudonim = models.ForeignKey(Rating, on_delete=models.CASCADE)
     weight = models.ForeignKey(Criteria,  on_delete=models.CASCADE)
-    value = models.IntegerField(default=0)
+    value = models.IntegerField(default=0,  validators=[MaxValueValidator(10)])
 
     def __str__(self):
         return ('%s - %s - %s' % (self.pseudonim, self.weight, self.value))
